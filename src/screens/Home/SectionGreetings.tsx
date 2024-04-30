@@ -2,6 +2,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
+import useColors from '@/hooks/useColors';
 // import { useAuth } from '../app/context/AuthContext';
 
 const SectionGreetings = () => {
@@ -16,6 +17,7 @@ const SectionGreetings = () => {
     const navigateToProfile = () => {
         navigation.navigate('Settings');
     }
+    const colors = useColors()
     return (
         <View style={{
             marginTop: 14,
@@ -42,7 +44,7 @@ const SectionGreetings = () => {
                 <TouchableOpacity
                     onPress={handlePress}
                 >
-                    <Feather name="log-out" size={40} color="black" />
+                    <Feather name="bell" size={30} color={colors.textSecondary} />
                 </TouchableOpacity>
 
             </View>

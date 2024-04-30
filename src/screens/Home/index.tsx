@@ -1,28 +1,34 @@
 import * as React from "react";
-import { StyleSheet, View, ScrollView, StatusBar, TouchableOpacity, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { Image } from "expo-image";
 import { Border, Color, FontFamily, FontSize } from "../../../GlobalStyles";
 import SectionGreetings from "./SectionGreetings";
-import { Feather, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 // import { API_URL } from "../../app/context/AuthContext";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 import { getTimeOfDay } from "@/lib/utils";
+import useColors from "@/hooks/useColors";
 
-export const API_URL = 'https://tafakari-7d6ea5b42c18.herokuapp.com/';
-
+export const API_URL = "https://tafakari-7d6ea5b42c18.herokuapp.com/";
 
 const HomeScreen = () => {
   const [canClick, setCanClick] = useState(true);
   const [lastClickedDate, setLastClickedDate] = useState(null);
   const navigation = useNavigation();
 
-
   const checkCanClick = async () => {
     try {
-      const lastDate = await AsyncStorage.getItem('@LastClickedDate');
+      const lastDate = await AsyncStorage.getItem("@LastClickedDate");
       if (lastDate) {
         const today = new Date().toDateString();
         if (lastDate === today) {
@@ -32,13 +38,13 @@ const HomeScreen = () => {
         }
       }
     } catch (error) {
-      console.error('Error reading data from AsyncStorage:', error);
+      console.error("Error reading data from AsyncStorage:", error);
     }
   };
 
   const handleFeelingClick = async (index) => {
     if (canClick) {
-      const registeredFeeling = feelings[index].name
+      const registeredFeeling = feelings[index].name;
 
       try {
         const response = await axios.post(`${API_URL}feelings`, {
@@ -48,55 +54,52 @@ const HomeScreen = () => {
         if (status === 201) {
           try {
             const today = new Date().toDateString();
-            await AsyncStorage.setItem('@LastClickedDate', today);
+            await AsyncStorage.setItem("@LastClickedDate", today);
             // @ts-ignore
             setLastClickedDate(today);
-            setCanClick(false)
+            setCanClick(false);
           } catch (error) {
-            console.error('Error storing data in AsyncStorage:', error);
+            console.error("Error storing data in AsyncStorage:", error);
           }
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   };
 
-
-
-
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState("Jane Doe");
   useEffect(() => {
     const getUser = async () => {
       const user = await axios.get(`${API_URL}users/users/me/`);
-      setUserName(user.data.fullname);
-    }
+      setUserName(user.data.fullname ?? "Jane Doe");
+    };
     checkCanClick();
     getUser();
   }, []);
 
   const feelings = [
-    { name: 'Happy', icon: 'smile', color: '#FFC107' },
-    { name: 'Sad', icon: 'frown', color: '#2196F3' },
-    { name: 'Excited', icon: 'heart', color: '#E91E63' },
-    { name: 'Angry', icon: 'user-x', color: '#F44336' },
-    { name: 'Anxious', icon: 'wind', color: '#FF9800' },
-    { name: 'Depressed', icon: 'x-circle', color: '#9C27B0' },
-    { name: 'Stressed', icon: 'zap-off', color: '#4CAF50' },
+    { name: "Happy", icon: "smile", color: "#FFC107" },
+    { name: "Sad", icon: "frown", color: "#2196F3" },
+    { name: "Excited", icon: "heart", color: "#E91E63" },
+    { name: "Angry", icon: "user-x", color: "#F44336" },
+    { name: "Anxious", icon: "wind", color: "#FF9800" },
+    { name: "Depressed", icon: "x-circle", color: "#9C27B0" },
+    { name: "Stressed", icon: "zap-off", color: "#4CAF50" },
   ];
 
   // function to get the greetings in the day
   const greeting = getTimeOfDay();
-
+  const colors = useColors();
   return (
-    <View 
-    // className="flex flex-1 bg-[#fbfbfb] -mt-10 "
-    style={{
+    <View
+      // className="flex flex-1 bg-[#fbfbfb] -mt-10 "
+      style={{
         flex: 1,
-        backgroundColor: "#fbfbfb",
+        backgroundColor: colors.calendarBackground,
         marginTop: -10,
-        
-    }}
+        paddingTop: 40,
+      }}
     >
       <StatusBar barStyle="dark-content" />
       <SectionGreetings />
@@ -104,232 +107,246 @@ const HomeScreen = () => {
       <ScrollView
         // className="mt-3 mx-4 mb-16"
         style={{
-            marginTop: 3,
-            marginHorizontal: 16,
-            marginBottom: 16,
-            }}
+          marginTop: 3,
+          marginHorizontal: 16,
+          marginBottom: 16,
+        }}
         showsVerticalScrollIndicator={false}
       >
         {/* Greetings section */}
-        <View 
-        style={{
-            flexDirection: 'row',
-            marginTop: 20,
-            marginBottom: 20,
-        }}
-        // className="flex mt-3 flex-row mb-3"
-        >
-          <Text 
-        //   className="text-2xl font-bold text-[#371B34]"
+        <View
           style={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                color: '#371B34',
-            
+            flexDirection: "row",
+            marginTop: 20,
+            marginBottom: 5,
           }}
-          >
-            <Text 
-            // className="font-medium"
+          // className="flex mt-3 flex-row mb-3"
+        >
+          <Text
+            //   className="text-2xl font-bold text-[#371B34]"
             style={{
-                fontWeight: '500',
+              fontSize: 30,
+              fontWeight: "bold",
+              color: colors.textSecondary,
             }}
-            >{greeting}, </Text> {'\n'}
+          >
+            <Text
+              // className="font-medium"
+              style={{
+                fontWeight: "400",
+              }}
+            >
+              {greeting},{" "}
+            </Text>{" "}
+            {"\n"}
             {userName?.slice(0, 8)}!
           </Text>
         </View>
 
-
         {/* Self Conqueror and feelings section */}
 
-        {
-          canClick && (
-            <View style={styles.container}>
-              <Text style={styles.heading}>How are you feeling today?</Text>
-              <ScrollView
-                horizontal
-                contentContainerStyle={styles.scrollContainer}
-                showsHorizontalScrollIndicator={false}
-              >
-                {feelings?.map((feeling, index) => (
-                  <View key={index} 
-                //   className="flex align-middle"
+        {canClick && (
+          <View style={styles.container}>
+            <Text style={{...styles.heading,  color: colors.textSecondary}}>How are you feeling today?</Text>
+            <ScrollView
+              horizontal
+              contentContainerStyle={styles.scrollContainer}
+              showsHorizontalScrollIndicator={false}
+            >
+              {feelings?.map((feeling, index) => (
+                <View
+                  key={index}
+                  //   className="flex align-middle"
                   style={{
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // alignContent: "center"
                   }}
+                >
+                  <TouchableOpacity
+                    key={index}
+                    style={[
+                      styles.feelingBox,
+                      { backgroundColor: feeling.color },
+                    ]}
+                    disabled={!canClick}
+                    onPress={() => handleFeelingClick(index)}
                   >
-                    <TouchableOpacity
-                      key={index}
-                      style={[styles.feelingBox, { backgroundColor: feeling.color }]}
-                      disabled={!canClick}
-                      onPress={() => handleFeelingClick(index)}
-                    >
-                        {/* @ts-ignore */}
-                      <Feather name={feeling.icon} size={50} color="white" />
-                    </TouchableOpacity>
-                    <Text 
+                    {/* @ts-ignore */}
+                    <Feather name={feeling.icon} size={30} style={{ padding:10 }} color="white" />
+                  </TouchableOpacity>
+                  <Text
                     style={{
-                        color: '#828282',
-                        fontWeight: 'bold',
-                        fontSize: 12,
-                        marginLeft: 4,
+                      color: "#828282",
+                      fontWeight: "bold",
+                      fontSize: 12,
+                      marginRight: 25,
+                      marginTop: 10,
                     }}
                     // className="text-[#828282] font-semibold text-[12px] ml-4"
-                    >{feeling.name}</Text>
-                  </View>
-                ))}
-              </ScrollView>
-            </View>
-          )
-        }
+                  >
+                    {feeling.name}
+                  </Text>
+                </View>
+              ))}
+            </ScrollView>
+          </View>
+        )}
 
-
-        <View 
-        // className="mt-5 py-5 flex flex-row bg-[#FEF3E7] rounded-xl justify-between items-center"
-        style={{
-            marginTop: 5,
-            padding: 20,
-            backgroundColor: '#FEF3E7',
-            borderRadius: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        }}
-         >
-          <View 
-        //   className="flex mt-4 px-4"
+        <View
+          // className="mt-5 py-5 flex flex-row bg-[#FEF3E7] rounded-xl justify-between items-center"
           style={{
-                marginTop: 16,
-                padding: 16,
-            
+            marginTop: 20,
+            padding: 20,
+            backgroundColor: "#FEF3E7",
+            borderRadius: 10,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
-          >
-            <Text 
-            // className="text-[22px] mb-3 font-bold text-[#573926]"
+        >
+          <View
+            //   className="flex mt-4 px-4"
             style={{
+              marginTop: 4,
+              paddingHorizontal: 10,
+            }}
+          >
+            <Text
+              // className="text-[22px] mb-3 font-bold text-[#573926]"
+              style={{
                 fontSize: 22,
                 marginBottom: 12,
-                fontWeight: 'bold',
-                color: '#573926',
-            }}
+                fontWeight: "bold",
+                color: "#573926",
+              }}
             >
               Library
             </Text>
             <Text
-            //   className="text-md mb-3 font-[12px] text-[#371B34]"
+              //   className="text-md mb-3 font-[12px] text-[#371B34]"
               style={{
                 fontSize: 12,
-                color: '#371B34',
-              marginBottom: 12,
-
+                color: "#371B34",
+                marginBottom: 12,
               }}
             >
               Let’s open up to the things that {"\n"}matter the most
             </Text>
 
             <TouchableOpacity onPress={() => navigation.navigate("Calendar")}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text 
-                // className="text-[#FE8235] font-bold"
-                style={{
-                    color: '#FE8235',
-                    fontWeight: 'bold',
-                }}
-                >Access </Text>
-                <MaterialCommunityIcons name="arrow-right" size={24} color="#FE8235" />
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text
+                  // className="text-[#FE8235] font-bold"
+                  style={{
+                    color: "#FE8235",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Access{" "}
+                </Text>
+                <MaterialCommunityIcons
+                  name="arrow-right"
+                  size={24}
+                  color="#FE8235"
+                />
               </View>
             </TouchableOpacity>
-
           </View>
           <Image
             contentFit="cover"
             // className="h-50 w-50"
             style={{
-                height: 50,
-                width: 50,
-            
+              height: 50,
+              width: 50,
             }}
             source={require("../../../assets/icons/ion_journal.png")}
           />
-
         </View>
 
-        <View 
-        // className="flex mt-9 flex-row justify-around items-center"
-        style={{
-            marginTop: 9,
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-        
-        }}
+        <View
+          // className="flex mt-9 flex-row justify-around items-center"
+          style={{
+            marginVertical: 20,
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
         >
           <TouchableOpacity
             onPress={() => navigation.navigate("Calendar")}
             // className="flex  px-9 py-4 rounded-3xl  flex-row items-center justify-between bg-[#F4F3F1]"
             style={{
-                backgroundColor: '#F4F3F1',
-                padding: 16,
-                borderRadius: 20,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-            
+              backgroundColor: "#F4F3F1",
+              padding: 25,
+              borderRadius: 20,
+              flexDirection: "row",
+              alignItems: "center",
+              width: "50%",
+              marginRight: 10,
             }}
           >
             <Ionicons name="journal" size={24} color="black" />
-            <Text 
-            // className="ml-2 text-[#573926] text-[14px]"
-            style={{
+            <Text
+              // className="ml-2 text-[#573926] text-[14px]"
+              style={{
                 marginLeft: 8,
-                color: '#573926',
-                fontSize: 14,
-            
-            }}
-            >{" "}Journal{" "}</Text>
+                // color: "#573926",
+                fontSize: 16,
+                color: colors.textSecondary,
+                fontWeight: "bold"
+              }}
+            >
+              {" "}
+              Journal{" "}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate("Calendar")}
             // className="flex  px-9 py-4 rounded-3xl  flex-row items-center justify-between bg-[#F4F3F1]"
             style={{
-                backgroundColor: '#F4F3F1',
-                padding: 16,
-                borderRadius: 20,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
+              backgroundColor: "#F4F3F1",
+              padding: 25,
+              borderRadius: 20,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: "50%",
             }}
           >
             <Ionicons name="people" size={24} color="black" />
-            <Text 
-            // className="ml-2 text-[#573926] text-[14px]"
-            style={{
-                marginLeft: 8,
-                color: '#573926',
-                fontSize: 14,
-            
-            
-            }}
-            >Community</Text>
+            <Text
+              // className="ml-2 text-[#573926] text-[14px]"
+              style={{
+                // marginLeft: 8,
+                // color: "#573926",
+                fontSize: 16,
+                color: colors.textSecondary,
+                fontWeight: "bold"
+              }}
+            >
+              Community
+            </Text>
           </TouchableOpacity>
-
         </View>
 
-        <View 
-        // className="bg-[#F8F6F6] px-8 py-5"
-        style={{
-            backgroundColor: '#F8F6F6',
-            padding: 20,
-        }}
-        >
-          <Text 
-        //   className="text-[#707070] text-[14px]"
+        <View
+          // className="bg-[#F8F6F6] px-8 py-5"
           style={{
-            color: '#707070',
-            fontSize: 14,
+            backgroundColor: "#F8F6F6",
+            padding: 20,
           }}
-          >“It is better to conquer yourself than to win a thousand battles”</Text>
+        >
+          <Text
+            //   className="text-[#707070] text-[14px]"
+            style={{
+              color: "#707070",
+              fontSize: 20,
+            }}
+          >
+            “It is better to conquer yourself than to win a thousand battles”
+          </Text>
         </View>
 
         {/* last container  */}
@@ -348,9 +365,13 @@ const HomeScreen = () => {
             </Text>
             <View style={[styles.watchNow, styles.watchLayout]}>
               <View style={[styles.watchNowChild, styles.watchLayout]} />
-              <Text onPress={() => navigation.navigate("Calendar")} style={[styles.start, styles.startClr]}>Start</Text>
+              <Text
+                onPress={() => navigation.navigate("Calendar")}
+                style={[styles.start, styles.startClr]}
+              >
+                Start
+              </Text>
               <Image
-
                 style={[
                   styles.evaarrowBackFillIcon1,
                   styles.evaarrowIconLayout,
@@ -359,7 +380,6 @@ const HomeScreen = () => {
                 source={require("../../../assets/evaarrowbackfill-white.png")}
               />
             </View>
-
           </View>
           <Image
             style={[styles.meditationIcon, styles.iconPosition]}
@@ -368,7 +388,6 @@ const HomeScreen = () => {
           />
         </View>
       </ScrollView>
-
     </View>
   );
 };
@@ -380,23 +399,23 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#371B34',
+    fontWeight: "normal",
+    // color: "#371B34",
   },
   scrollContainer: {
     paddingVertical: 10,
   },
   feelingBox: {
     marginRight: 24,
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
+    padding: 10,
+    borderRadius: 20,
+    alignItems: "center",
   },
   feelingText: {
-    textAlign: 'center',
-    color: 'white',
+    textAlign: "center",
+    color: "white",
     marginTop: 5,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   frameScrollViewContent: {
     flexDirection: "column",
@@ -408,7 +427,7 @@ const styles = StyleSheet.create({
     left: 0,
     top: 0,
     height: 151,
-    width: '100%',
+    width: "100%",
     position: "absolute",
   },
   maskGroupIconPosition: {
@@ -453,7 +472,7 @@ const styles = StyleSheet.create({
   },
   groupLayout: {
     height: 200,
-    width: '100%',
+    width: "100%",
   },
   startClr: {
     color: Color.white,
