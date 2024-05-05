@@ -56,9 +56,9 @@ const getAvailableStepsForCreate = ({
   const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(date), 'day'))
   const hasSleep = itemsOnDate.some(item => item.sleep?.quality !== null)
 
-  if (hasStep('sleep') && !hasSleep) slides.push('sleep')
+  // if (hasStep('sleep') && !hasSleep) slides.push('sleep')
   if (hasStep('emotions')) slides.push('emotions')
-  if (hasStep('tags')) slides.push('tags')
+  // if (hasStep('tags')) slides.push('tags')
   if (hasStep('message')) slides.push('message')
 
   if (
@@ -96,9 +96,9 @@ const getAvailableStepsForEdit = ({
   const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(date), 'day'))
   const hasSleep = itemsOnDate.some(item => item.sleep?.quality !== null)
 
-  if (item.sleep?.quality || (!hasSleep && hasStep('sleep'))) slides.push('sleep')
+  // if (item.sleep?.quality || (!hasSleep && hasStep('sleep'))) slides.push('sleep')
   if (hasStep('emotions') || item.emotions.length > 0) slides.push('emotions')
-  if (hasStep('tags') || item.tags.length > 0) slides.push('tags')
+  // if (hasStep('tags') || item.tags.length > 0) slides.push('tags')
   if (hasStep('message') || item.message.length > 0) slides.push('message')
 
   return slides;
@@ -313,41 +313,41 @@ export const Logger = ({
     )
   })
 
-  if (avaliableSteps.includes('sleep')) {
-    content.push({
-      key: 'sleep',
-      slide: (
-        <SlideSleep
-          onChange={(value: LogItem['sleep']['quality']) => {
-            if (tempLog.data.sleep.quality === value) {
-              tempLog.update({
-                sleep: {
-                  ...tempLog.data.sleep,
-                  quality: null
-                }
-              })
-            } else {
+  // if (avaliableSteps.includes('sleep')) {
+  //   content.push({
+  //     key: 'sleep',
+  //     slide: (
+  //       <SlideSleep
+  //         onChange={(value: LogItem['sleep']['quality']) => {
+  //           if (tempLog.data.sleep.quality === value) {
+  //             tempLog.update({
+  //               sleep: {
+  //                 ...tempLog.data.sleep,
+  //                 quality: null
+  //               }
+  //             })
+  //           } else {
 
-              tempLog.update({
-                sleep: {
-                  ...tempLog.data.sleep,
-                  quality: value
-                }
-              })
-              next()
-            }
-          }}
-          showDisable={showDisable}
-          onDisableStep={() => {
-            askToDisableStep().then(() => {
-              toggleStep('sleep')
-              next()
-            })
-          }}
-        />
-      ),
-    })
-  }
+  //             tempLog.update({
+  //               sleep: {
+  //                 ...tempLog.data.sleep,
+  //                 quality: value
+  //               }
+  //             })
+  //             next()
+  //           }
+  //         }}
+  //         showDisable={showDisable}
+  //         onDisableStep={() => {
+  //           askToDisableStep().then(() => {
+  //             toggleStep('sleep')
+  //             next()
+  //           })
+  //         }}
+  //       />
+  //     ),
+  //   })
+  // }
 
   if (avaliableSteps.includes('emotions')) {
     content.push({
@@ -371,25 +371,25 @@ export const Logger = ({
     })
   }
 
-  if (avaliableSteps.includes('tags')) {
-    content.push({
-      key: 'tags',
-      slide: (
-        <SlideTags
-          onChange={(tags: TagReference[]) => {
-            tempLog.update({ tags })
-          }}
-          onDisableStep={() => {
-            askToDisableStep().then(() => {
-              toggleStep('tags')
-              next()
-            })
-          }}
-          showDisable={showDisable}
-        />
-      ),
-    })
-  }
+  // if (avaliableSteps.includes('tags')) {
+  //   content.push({
+  //     key: 'tags',
+  //     slide: (
+  //       <SlideTags
+  //         onChange={(tags: TagReference[]) => {
+  //           tempLog.update({ tags })
+  //         }}
+  //         onDisableStep={() => {
+  //           askToDisableStep().then(() => {
+  //             toggleStep('tags')
+  //             next()
+  //           })
+  //         }}
+  //         showDisable={showDisable}
+  //       />
+  //     ),
+  //   })
+  // }
 
   if (avaliableSteps.includes('message')) {
     content.push({

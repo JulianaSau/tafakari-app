@@ -194,77 +194,43 @@ const HomeScreen = () => {
           </View>
         )}
 
-        <View
-          // className="mt-5 py-5 flex flex-row bg-[#FEF3E7] rounded-xl justify-between items-center"
-          style={{
-            marginTop: 20,
-            padding: 20,
-            backgroundColor: "#FEF3E7",
-            borderRadius: 10,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <View
-            //   className="flex mt-4 px-4"
-            style={{
-              marginTop: 4,
-              paddingHorizontal: 10,
-            }}
-          >
-            <Text
-              // className="text-[22px] mb-3 font-bold text-[#573926]"
-              style={{
-                fontSize: 22,
-                marginBottom: 12,
-                fontWeight: "bold",
-                color: "#573926",
-              }}
-            >
-              Library
+       
+        <View style={[styles.rectangleGroup, styles.groupLayout]}>
+          <View style={[styles.rectangle1, styles.rectangleLayout]} />
+          <Image
+            style={[styles.maskGroupIcon, styles.maskGroupIconPosition]}
+            contentFit="cover"
+            source={require("../../../assets/mask-group2.png")}
+          />
+          <View style={styles.peerGroupMeetup}>
+            <Text style={[styles.journal, styles.startClr]}>Journal</Text>
+            <Text style={[styles.getBackChat, styles.startClr]}>
+              Get back chat access and session credits
             </Text>
-            <Text
-              //   className="text-md mb-3 font-[12px] text-[#371B34]"
-              style={{
-                fontSize: 12,
-                color: "#371B34",
-                marginBottom: 12,
-              }}
-            >
-              Let’s open up to the things that {"\n"}matter the most
-            </Text>
-
-            <TouchableOpacity onPress={() => navigation.navigate("Calendar")}>
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text
-                  // className="text-[#FE8235] font-bold"
-                  style={{
-                    color: "#FE8235",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Access{" "}
-                </Text>
-                <MaterialCommunityIcons
-                  name="arrow-right"
-                  size={24}
-                  color="#FE8235"
-                />
-              </View>
-            </TouchableOpacity>
+            <View style={[styles.watchNow, styles.watchLayout]}>
+              <View style={[styles.watchNowChild, styles.watchLayout]} />
+              <Text
+                onPress={() => navigation.navigate("Calendar")}
+                style={[styles.start, styles.startClr]}
+              >
+                Start
+              </Text>
+              <Image
+                style={[
+                  styles.evaarrowBackFillIcon1,
+                  styles.evaarrowIconLayout,
+                ]}
+                contentFit="cover"
+                source={require("../../../assets/evaarrowbackfill-white.png")}
+              />
+            </View>
           </View>
           <Image
+            style={[styles.meditationIcon, styles.iconPosition]}
             contentFit="cover"
-            // className="h-50 w-50"
-            style={{
-              height: 50,
-              width: 50,
-            }}
-            source={require("../../../assets/icons/ion_journal.png")}
+            source={require("../../../assets/meditation-icon.png")}
           />
         </View>
-
         <View
           // className="flex mt-9 flex-row justify-around items-center"
           style={{
@@ -351,40 +317,76 @@ const HomeScreen = () => {
 
         {/* last container  */}
 
-        <View style={[styles.rectangleGroup, styles.groupLayout]}>
-          <View style={[styles.rectangle1, styles.rectangleLayout]} />
-          <Image
-            style={[styles.maskGroupIcon, styles.maskGroupIconPosition]}
-            contentFit="cover"
-            source={require("../../../assets/mask-group2.png")}
-          />
-          <View style={styles.peerGroupMeetup}>
-            <Text style={[styles.journal, styles.startClr]}>Journal</Text>
-            <Text style={[styles.getBackChat, styles.startClr]}>
-              Get back chat access and session credits
+        <View
+          // className="mt-5 py-5 flex flex-row bg-[#FEF3E7] rounded-xl justify-between items-center"
+          style={{
+            marginTop: 20,
+            padding: 20,
+            backgroundColor: "#FEF3E7",
+            borderRadius: 10,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <View
+            //   className="flex mt-4 px-4"
+            style={{
+              marginTop: 4,
+              paddingHorizontal: 10,
+            }}
+          >
+            <Text
+              // className="text-[22px] mb-3 font-bold text-[#573926]"
+              style={{
+                fontSize: 22,
+                marginBottom: 12,
+                fontWeight: "bold",
+                color: "#573926",
+              }}
+            >
+              Library
             </Text>
-            <View style={[styles.watchNow, styles.watchLayout]}>
-              <View style={[styles.watchNowChild, styles.watchLayout]} />
-              <Text
-                onPress={() => navigation.navigate("Calendar")}
-                style={[styles.start, styles.startClr]}
-              >
-                Start
-              </Text>
-              <Image
-                style={[
-                  styles.evaarrowBackFillIcon1,
-                  styles.evaarrowIconLayout,
-                ]}
-                contentFit="cover"
-                source={require("../../../assets/evaarrowbackfill-white.png")}
-              />
-            </View>
+            <Text
+              //   className="text-md mb-3 font-[12px] text-[#371B34]"
+              style={{
+                fontSize: 12,
+                color: "#371B34",
+                marginBottom: 12,
+              }}
+            >
+              Let’s open up to the things that {"\n"}matter the most
+            </Text>
+
+            <TouchableOpacity 
+            // onPress={() => navigation.navigate("Calendar")}
+            >
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text
+                  // className="text-[#FE8235] font-bold"
+                  style={{
+                    color: "#FE8235",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Access{" "}
+                </Text>
+                <MaterialCommunityIcons
+                  name="arrow-right"
+                  size={24}
+                  color="#FE8235"
+                />
+              </View>
+            </TouchableOpacity>
           </View>
           <Image
-            style={[styles.meditationIcon, styles.iconPosition]}
             contentFit="cover"
-            source={require("../../../assets/meditation-icon.png")}
+            // className="h-50 w-50"
+            style={{
+              height: 50,
+              width: 50,
+            }}
+            source={require("../../../assets/icons/ion_journal.png")}
           />
         </View>
       </ScrollView>

@@ -93,12 +93,12 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             onPress={() => navigation.navigate('Colors')}
             isLink
           />
-          <MenuListItem
+          {/* <MenuListItem
             title={t('tags')}
             iconLeft={<Tag width={18} color={colors.menuListItemIcon} />}
             onPress={() => navigation.navigate('SettingsTags')}
             isLink
-          />
+          /> */}
           <MenuListItem
             title={t('steps')}
             iconLeft={<CheckCircle width={18} color={colors.menuListItemIcon} />}
@@ -138,7 +138,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
 
         </MenuList>
 
-        <MenuListHeadline>{t('settings_feedback')}</MenuListHeadline>
+        {/* <MenuListHeadline>{t('settings_feedback')}</MenuListHeadline>
         <MenuList
           style={{
           }}
@@ -151,14 +151,14 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             isLast
           />
         </MenuList>
-        <TextInfo>{t('feedback_help')}</TextInfo>
+        <TextInfo>{t('feedback_help')}</TextInfo> */}
 
         <MenuListHeadline>{t('settings_about')}</MenuListHeadline>
         <MenuList
           style={{
           }}
         >
-          <MenuListItem
+          {/* <MenuListItem
             title={t('vote_features')}
             onPress={async () => {
               analytics.track('settings_vote_features')
@@ -166,7 +166,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             }}
             iconLeft={<ArrowUpCircle width={18} color={colors.menuListItemIcon} />}
             testID='vote_features'
-          />
+          /> */}
           <MenuListItem
             title={t('changelog')}
             onPress={async () => {
@@ -189,7 +189,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
           />
         </MenuList>
 
-        <MenuListHeadline>{t('settings_development')}</MenuListHeadline>
+        {/* <MenuListHeadline>{t('settings_development')}</MenuListHeadline>
         <MenuList
           style={{
           }}
@@ -219,7 +219,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             isLink
             isLast
           />
-        </MenuList>
+        </MenuList> */}
         <View
           style={{
             marginTop: 20,
@@ -229,7 +229,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             marginBottom: 40,
           }}
         >
-          <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>Pixy v{pkg.version}</Text>
+          <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>Tafakari v{pkg.version}</Text>
           {Updates.channel && <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>{Updates.channel}</Text>}
         </View>
 

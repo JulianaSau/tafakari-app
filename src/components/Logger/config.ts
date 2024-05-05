@@ -1,12 +1,19 @@
 import { t } from "@/helpers/translation";
 import { Emotion } from "@/types";
 
-export type LoggerStep = "rating" | "tags" | "message" | "feedback" | "reminder" | "emotions" | "sleep";
+export type LoggerStep = 
+"rating" | 
+// "tags" | 
+"message" | 
+"feedback" | 
+"reminder" | 
+// "sleep";
+"emotions"  
 
 export const STEP_OPTIONS: LoggerStep[] = [
   "rating",
-  "tags",
-  "sleep",
+  // "tags",
+  // "sleep",
   "emotions",
   "message",
   "feedback",
