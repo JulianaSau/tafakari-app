@@ -4,13 +4,13 @@
     <img src="./docs/icon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Pixy Mood Tracker</h3>
+  <h3 align="center">Tafakari App</h3>
 
   <p align="center">Minimalistic app to track your mood within one pixel a day.</p>
   <p align="center">
-    <a href="https://apps.apple.com/de/app/pixy-mood-tracker/id1605327124">Apple App Store</a>
+    <a href="https://apps.apple.com/de/app/tafakari-mood-tracker/id1605327124">Apple App Store</a>
     ·
-    <a href="https://play.google.com/store/apps/details?id=com.devmood.pixymoodtracker">Google Play Store</a>
+    <a href="https://play.google.com/store/apps/details?id=com.devmood.tafakarimoodtracker">Google Play Store</a>
   </p>
 </p>
 
@@ -90,7 +90,7 @@ Contributions are what make the open source community such an amazing place to l
 
 ## Contact
 
-mrzmyr [@mrzmyr](https://twitter.com/mrzmyr)
+Juliana Sau [@juliana_sau](https://twitter.com/juliana_sau)
 
 Project Link: [https://github.com/mrzmyr/pixy-mood-tracker](https://github.com/mrzmyr/pixy-mood-tracker)
 

@@ -11,9 +11,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   const isDevClient = process.env.DEV_CLIENT === 'true';
 
   if (isDevClient) {
-    _config.name = 'Pixy Dev';
-    _config.ios!.bundleIdentifier = `com.devmood.pixymoodtracker.dev`
-    _config.android!.package = `com.devmood.pixymoodtracker.dev`
+    _config.name = 'Tafakari Dev';
+    _config.ios!.bundleIdentifier = `com.devmood.tafakarimoodtracker.dev`
+    _config.android!.package = `com.devmood.tafakarimoodtracker.dev`
     _config.android!.icon = _config.icon = './assets/images/icon-dev.png';
   }
 
