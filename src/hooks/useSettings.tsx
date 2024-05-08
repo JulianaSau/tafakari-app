@@ -59,9 +59,9 @@ export const INITIAL_STATE: SettingsState = {
   actionsDone: [],
   steps: [
     "rating",
-    "sleep",
+    // "sleep",
     "emotions",
-    "tags",
+    // "tags",
     "message",
     "feedback"
   ],
@@ -105,7 +105,7 @@ function SettingsProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     (async () => {
-      const json = await load<SettingsState>(STORAGE_KEY);
+      const json = await load<SettingsState>(STORAGE_KEY,"");
       if (json !== null) {
         if (!json.deviceId) {
           json.deviceId = uuidv4();

@@ -26,7 +26,7 @@ export const load = async <ReturnValue>(key: string, feedback: any): Promise<Ret
           description: error.message,
           trace: error.stack,
         }),
-        email: "team@pixy.day",
+        email: "julienyange@gmail.com",
         source: "error",
         onCancel: () => {
         },
