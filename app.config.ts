@@ -12,8 +12,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
   if (isDevClient) {
     _config.name = 'Tafakari Dev';
-    _config.ios!.bundleIdentifier = `com.devmood.tafakarimoodtracker.dev`
-    _config.android!.package = `com.devmood.tafakarimoodtracker.dev`
+    _config.ios!.bundleIdentifier = `com.devmood.tafakariapp.dev`
+    _config.android!.package = `com.devmood.tafakariapp.dev`
     _config.android!.icon = _config.icon = './assets/images/icon-dev.png';
   }
 

@@ -2,6 +2,7 @@
 
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
+import useFonts from './useFonts';
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -14,6 +15,8 @@ export default function useCachedResources() {
         //   'sora-regular': require('../assets/fonts/Sora-Regular.ttf'),
         //   'sora-bold': require('../assets/fonts/Sora-Bold.ttf'),
         // });
+        await useFonts()
+
 
         SplashScreen.preventAutoHideAsync();
       } catch (e) {

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Tafakari",
-    "slug": "tafakari-mood-tracker",
+    "slug": "tafakari-app",
     "version": "1.86.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -18,13 +18,13 @@
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/8917be91-f1cc-4276-a252-674a28490ac3"
+      "url": "https://u.expo.dev/02f2b484-93b9-4ed1-a055-e38dffc54817]"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.devmood.tafakarimoodtracker",
+      "bundleIdentifier": "com.devmood.tafakariapp",
       "buildNumber": "1.86.0",
       "supportsTablet": false,
       "appStoreUrl": "https://apps.apple.com/de/app/tafakari-mood-tracker/id1605327124",
@@ -33,7 +33,7 @@
       }
     },
     "android": {
-      "package": "com.devmood.tafakarimoodtracker",
+      "package": "com.devmood.tafakariapp",
       "versionCode": 480018600,
       "allowBackup": false,
       "permissions": [],
@@ -42,7 +42,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.devmood.tafakarimoodtracker"
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.devmood.tafakariapp"
     },
     "plugins": [
       "expo-font",
@@ -61,7 +61,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "8917be91-f1cc-4276-a252-674a28490ac3"
+        "projectId": "e5ac94bc-0901-4cd7-adcf-a819bcb5c4a5"
       }
     }
   }

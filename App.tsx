@@ -3,6 +3,7 @@ import useCachedResources from '@/hooks/useCachedResources';
 import Navigation from '@/navigation';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import "./src/styles/globals.css"
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

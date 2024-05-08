@@ -10,7 +10,7 @@
   <p align="center">
     <a href="https://apps.apple.com/de/app/tafakari-mood-tracker/id1605327124">Apple App Store</a>
     ·
-    <a href="https://play.google.com/store/apps/details?id=com.devmood.tafakarimoodtracker">Google Play Store</a>
+    <a href="https://play.google.com/store/apps/details?id=com.devmood.tafakariapp">Google Play Store</a>
   </p>
 </p>
 
