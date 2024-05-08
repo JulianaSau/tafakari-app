@@ -44,16 +44,7 @@ export const BottomTabs = () => {
       })}
       tabBar={props => <MyTabBar {...props} />}
     >
-      <Tab.Screen
-        name="Statistics"
-        component={StatisticsScreen}
-        options={({ navigation }) => ({
-          ...defaultOptions,
-          headerShown: false,
-          tabBarTestID: 'statistics',
-          title: t('statistics'),
-        })} />
-      <Tab.Screen
+       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={({ navigation }) => ({
@@ -61,7 +52,7 @@ export const BottomTabs = () => {
           headerShown: false,
           tabBarTestID: 'home',
           title: t('home'),
-        })} />
+        })} />   
       <Tab.Screen
         name="Calendar"
         component={CalendarScreen}
@@ -87,6 +78,15 @@ export const BottomTabs = () => {
           ),
           tabBarTestID: 'calendar',
           title: t('calendar'),
+        })} />
+              <Tab.Screen
+        name="Statistics"
+        component={StatisticsScreen}
+        options={({ navigation }) => ({
+          ...defaultOptions,
+          headerShown: false,
+          tabBarTestID: 'statistics',
+          title: t('statistics'),
         })} />
       <Tab.Screen
         name="Settings"

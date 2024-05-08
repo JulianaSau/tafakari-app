@@ -45,7 +45,7 @@ enableScreens();
 
 const NAVIGATION_LINKING = {
   prefixes: [
-    'pixy://',
+    'tafakari://',
     Linking.createURL('/'),
   ],
   config: {
@@ -180,6 +180,7 @@ function RootNavigator() {
       <Stack.Navigator
         initialRouteName="tabs"
         screenOptions={{
+          // navigationBarColor: "#fff",
           navigationBarColor: colors.tabsBackground,
         }}
       >

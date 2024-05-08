@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import useColors from '@/hooks/useColors';
 // import { useAuth } from '../app/context/AuthContext';
 
-const SectionGreetings = () => {
+const SectionGreetings = ({marginH = 16}) => {
     // const { onLogout } = useAuth();
 
     const navigation = useNavigation();
@@ -29,7 +29,7 @@ const SectionGreetings = () => {
             style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                marginHorizontal: 16,
+                marginHorizontal: marginH,
                 alignItems: 'center',
             }}
             // className="flex flex-row justify-between mx-4 items-center"

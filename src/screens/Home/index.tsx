@@ -18,6 +18,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { getTimeOfDay } from "@/lib/utils";
 import useColors from "@/hooks/useColors";
+import Indicator from "@/components/Indicator";
+import { useCalendarNavigation } from "@/hooks/useCalendarNavigation";
+import dayjs from "dayjs";
+import { DATE_FORMAT } from "@/constants/Config";
 
 export const API_URL = "https://tafakari-7d6ea5b42c18.herokuapp.com/";
 
@@ -91,13 +95,21 @@ const HomeScreen = () => {
   // function to get the greetings in the day
   const greeting = getTimeOfDay();
   const colors = useColors();
+  const calendarNavigation = useCalendarNavigation();
+  const onPressDay = React.useCallback(
+    (date: string) => {
+      calendarNavigation.openDay(date);
+    },
+    [navigation, calendarNavigation]
+  );
   return (
     <View
       // className="flex flex-1 bg-[#fbfbfb] -mt-10 "
       style={{
         flex: 1,
         backgroundColor: colors.calendarBackground,
-        marginTop: -10,
+        marginTop: -8,
+
         paddingTop: 40,
       }}
     >
@@ -147,7 +159,9 @@ const HomeScreen = () => {
 
         {canClick && (
           <View style={styles.container}>
-            <Text style={{...styles.heading,  color: colors.textSecondary}}>How are you feeling today?</Text>
+            <Text style={{ ...styles.heading, color: colors.textSecondary }}>
+              How are you feeling today?
+            </Text>
             <ScrollView
               horizontal
               contentContainerStyle={styles.scrollContainer}
@@ -171,10 +185,23 @@ const HomeScreen = () => {
                       { backgroundColor: feeling.color },
                     ]}
                     disabled={!canClick}
-                    onPress={() => handleFeelingClick(index)}
+                    onPress={() => {
+                      // handleFeelingClick(index)
+                      // Get today's date
+                      const today = dayjs();
+
+                      // Format today's date using DATE_FORMAT constant
+                      const formattedDate = today.format(DATE_FORMAT);
+                      onPressDay(formattedDate);
+                    }}
                   >
-                    {/* @ts-ignore */}
-                    <Feather name={feeling.icon} size={30} style={{ padding:10 }} color="white" />
+                    <Feather
+                    // @ts-ignore
+                      name={feeling.icon}
+                      size={30}
+                      style={{ padding: 10 }}
+                      color="white"
+                    />
                   </TouchableOpacity>
                   <Text
                     style={{
@@ -194,7 +221,6 @@ const HomeScreen = () => {
           </View>
         )}
 
-       
         <View style={[styles.rectangleGroup, styles.groupLayout]}>
           <View style={[styles.rectangle1, styles.rectangleLayout]} />
           <Image
@@ -215,14 +241,14 @@ const HomeScreen = () => {
               >
                 Start
               </Text>
-              <Image
-                style={[
-                  styles.evaarrowBackFillIcon1,
-                  styles.evaarrowIconLayout,
-                ]}
-                contentFit="cover"
-                source={require("../../../assets/evaarrowbackfill-white.png")}
-              />
+              <Feather
+                    // @ts-ignore
+                      name={"arrow-right"}
+                      size={16}
+                      style={{ padding: 10, marginLeft: 30, marginTop:3  }}
+                      color="white"
+                    />
+             
             </View>
           </View>
           <Image
@@ -234,7 +260,8 @@ const HomeScreen = () => {
         <View
           // className="flex mt-9 flex-row justify-around items-center"
           style={{
-            marginVertical: 20,
+            marginHorizontal: 8,
+            marginBottom: 20,
             flexDirection: "row",
             justifyContent: "space-around",
             alignItems: "center",
@@ -245,15 +272,16 @@ const HomeScreen = () => {
             // className="flex  px-9 py-4 rounded-3xl  flex-row items-center justify-between bg-[#F4F3F1]"
             style={{
               backgroundColor: "#F4F3F1",
+               // opacity:.2, //for dark mode
               padding: 25,
               borderRadius: 20,
               flexDirection: "row",
               alignItems: "center",
               width: "50%",
-              marginRight: 10,
+              marginRight: 30,
             }}
           >
-            <Ionicons name="journal" size={24} color="black" />
+            <Ionicons name="journal" size={24} color={colors.textSecondary} />
             <Text
               // className="ml-2 text-[#573926] text-[14px]"
               style={{
@@ -261,7 +289,7 @@ const HomeScreen = () => {
                 // color: "#573926",
                 fontSize: 16,
                 color: colors.textSecondary,
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               {" "}
@@ -273,6 +301,7 @@ const HomeScreen = () => {
             // className="flex  px-9 py-4 rounded-3xl  flex-row items-center justify-between bg-[#F4F3F1]"
             style={{
               backgroundColor: "#F4F3F1",
+              // opacity:.2, //for dark mode
               padding: 25,
               borderRadius: 20,
               flexDirection: "row",
@@ -281,7 +310,7 @@ const HomeScreen = () => {
               width: "50%",
             }}
           >
-            <Ionicons name="people" size={24} color="black" />
+            <Ionicons name="people" size={24} color={colors.textSecondary} />
             <Text
               // className="ml-2 text-[#573926] text-[14px]"
               style={{
@@ -289,7 +318,7 @@ const HomeScreen = () => {
                 // color: "#573926",
                 fontSize: 16,
                 color: colors.textSecondary,
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               Community
@@ -301,14 +330,16 @@ const HomeScreen = () => {
           // className="bg-[#F8F6F6] px-8 py-5"
           style={{
             backgroundColor: "#F8F6F6",
+            // opacity:.1, //for dark mode
             padding: 20,
+            borderRadius: 20
           }}
         >
           <Text
             //   className="text-[#707070] text-[14px]"
             style={{
               color: "#707070",
-              fontSize: 20,
+              fontSize: 18,
             }}
           >
             “It is better to conquer yourself than to win a thousand battles”
@@ -323,7 +354,8 @@ const HomeScreen = () => {
             marginTop: 20,
             padding: 20,
             backgroundColor: "#FEF3E7",
-            borderRadius: 10,
+            // opacity:.1, //for dark mode
+            borderRadius: 20,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
@@ -343,6 +375,7 @@ const HomeScreen = () => {
                 marginBottom: 12,
                 fontWeight: "bold",
                 color: "#573926",
+                // color: "white" //for dark mode
               }}
             >
               Library
@@ -358,10 +391,21 @@ const HomeScreen = () => {
               Let’s open up to the things that {"\n"}matter the most
             </Text>
 
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
             // onPress={() => navigation.navigate("Calendar")}
+            > */}
+
+            <Indicator
+              colorName="orange"
+              style={{
+                // marginLeft: 8,
+                width: 100,
+              }}
             >
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
+              Coming Soon
+            </Indicator>
+
+            {/* <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
                   // className="text-[#FE8235] font-bold"
                   style={{
@@ -376,18 +420,16 @@ const HomeScreen = () => {
                   size={24}
                   color="#FE8235"
                 />
-              </View>
-            </TouchableOpacity>
+              </View> */}
+            {/* </TouchableOpacity> */}
           </View>
-          <Image
-            contentFit="cover"
-            // className="h-50 w-50"
-            style={{
-              height: 50,
-              width: 50,
-            }}
-            source={require("../../../assets/icons/ion_journal.png")}
-          />
+          <Feather
+                    // @ts-ignore
+                      name={"package"}
+                      size={50}
+                      style={{ padding: 10, marginLeft: 30, marginTop:3  }}
+                      color={colors.textSecondary}
+                    />
         </View>
       </ScrollView>
     </View>
@@ -428,13 +470,13 @@ const styles = StyleSheet.create({
     borderRadius: Border.br_xl,
     left: 0,
     top: 0,
-    height: 151,
+    height: 161,
     width: "100%",
     position: "absolute",
   },
   maskGroupIconPosition: {
-    left: 0,
-    top: 0,
+    right: 0,
+    top: 10,
     position: "absolute",
   },
   libraryClr: {
@@ -468,12 +510,13 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   iconPosition: {
-    left: 217,
+    right: 30,
+    bottom:5,
     position: "absolute",
     overflow: "hidden",
   },
   groupLayout: {
-    height: 200,
+    height: 180,
     width: "100%",
   },
   startClr: {
@@ -539,6 +582,7 @@ const styles = StyleSheet.create({
   },
   rectangle1: {
     backgroundColor: "#53a06e",
+    // opacity:.2, //for dark mode
   },
   journal: {
     fontFamily: FontFamily.epilogueExtraBold,

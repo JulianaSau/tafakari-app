@@ -53,7 +53,9 @@ export function MyTabBar({ state, descriptors, navigation }) {
         marginBottom: insets.bottom,
         borderTopColor: colors.tabsBorder,
         borderTopWidth: 1,
+        // backgroundColor: "#fff",
         backgroundColor: colors.tabsBackground,
+        height: 53
       }}
     >
       {state.routes.map((route, index) => {
@@ -105,10 +107,10 @@ export function MyTabBar({ state, descriptors, navigation }) {
                 width: '50%',
                 height: 2,
                 marginTop: -1,
-                marginBottom: 4,
+                marginBottom: 20,
               }} />
-            <Icon width={20} color={isFocused ? colors.tabsIconActive : colors.tabsIconInactive} />
-            <Text
+            <Icon width={100} height={30} color={isFocused ? colors.tabsIconActive : colors.tabsIconInactive} />
+            {/* <Text
               style={{
                 color: isFocused ? colors.tabsTextActive : colors.tabsTextInactive,
                 fontSize: 12,
@@ -116,7 +118,7 @@ export function MyTabBar({ state, descriptors, navigation }) {
                 marginTop: 2,
                 marginBottom: 4,
               }}
-            >{t(label.toLowerCase())}</Text>
+            >{t(label.toLowerCase())}</Text> */}
           </Pressable>
         );
       })}

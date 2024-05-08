@@ -17,6 +17,7 @@ import { HighlightsSection } from './HighlightsSection';
 import { DATE_FORMAT, STATISTIC_MIN_LOGS } from '@/constants/Config';
 import isBetween from 'dayjs/plugin/isBetween';
 import { RootStackScreenProps } from '../../../types';
+import SectionGreetings from '../Home/SectionGreetings';
 
 dayjs.extend(isBetween);
 
@@ -92,11 +93,12 @@ export const StatisticsScreen = ({ navigation }: RootStackScreenProps<'Statistic
     >
       <View
         style={{
-          paddingHorizontal: 20,
-          paddingTop: insets.top + 20,
+          paddingHorizontal: 16,
+          paddingTop: insets.top + 0,
           paddingBottom: insets.bottom + 20,
         }}
       >
+         <SectionGreetings marginH={0} />
         {items.length < STATISTIC_MIN_LOGS && (
           <EmptyPlaceholder count={STATISTIC_MIN_LOGS - items.length} />
         )}

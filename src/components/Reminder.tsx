@@ -88,6 +88,8 @@ const Reminder = () => {
               // @ts-ignore
               value={reminderEnabled}
               testID='reminder-enabled'
+              // thumbColor={reminderEnabled ? colors.tint : undefined}
+              // trackColor={reminderEnabled ? colors.textSecondary : undefined}
             />
           }
           isLast={!reminderEnabled}

@@ -37,12 +37,15 @@ tagColorNames.map(color => {
   }
 })
 
-const tintColorLight = '#007aff';
-const tintColorDark = '#0a84ff';
+// const tintColorLight = '#007aff';
+const tintColorLight = '#FE8235';
+// const tintColorDark = '#0a84ff';
+const tintColorDark = '#FE8235';
 
 const light = {
   text: '#000',
-  textSecondary: colors.neutral[500],
+  // textSecondary: colors.neutral[500],
+  textSecondary: "#573926",
   background: colors.neutral[100],
   backgroundSecondary: colors.neutral[300],
   link: tintColorLight,
@@ -96,12 +99,15 @@ const light = {
 
   headerBorder: colors.neutral[300],
 
+  // tabsBackground: "#fff",
   tabsBackground: colors.neutral[100],
   tabsBorder: colors.neutral[300],
 
-  tabsIconActive: tintColorLight,
+  // tabsIconActive: tintColorLight,
+  tabsIconActive: "#FE8235",
   tabsIconInactive: colors.neutral[400],
-  tabsTextActive: tintColorLight,
+  // tabsTextActive: tintColorLight,
+  tabsTextActive: "#FE8235",
   tabsTextInactive: colors.neutral[400],
 
   passcodeDotBackground: colors.neutral[300],
@@ -110,7 +116,8 @@ const light = {
 
   menuListItemBackground: '#FFF',
   menuListItemText: '#000',
-  menuListItemIcon: '#000',
+  menuListItemIcon: "#FE8235",
+  // menuListItemIcon: '#000',
   menuListItemBorder: colors.neutral[100],
 
   notificationBackground: '#FFF',
@@ -122,24 +129,27 @@ const light = {
   calendarWeekNameColor: colors.neutral[400],
   calendarMonthNameColor: colors.neutral[400],
 
-  linkButtonTextPrimary: tintColorLight,
+  // linkButtonTextPrimary: tintColorLight,
+  linkButtonTextPrimary: "#FE8235",
   linkButtonTextPrimaryDisabled: colors.neutral[400],
   linkButtonTextSecondary: colors.neutral[500],
   linkButtonTextSecondaryDisabled: colors.neutral[400],
   linkButtonTextDanger: colors.red[500],
   linkButtonTextDangerDisabled: colors.neutral[400],
 
-  primaryButtonBackground: tintColorLight,
+  // primaryButtonBackground: tintColorLight,
+  primaryButtonBackground: "#FE8235",
   primaryButtonText: '#FFF',
-  primaryButtonBorder: tintColorLight,
+  // primaryButtonBorder: tintColorLight,
+  primaryButtonBorder: "#FE8235",
 
   primaryButtonBackgroundDisabled: colors.neutral[300],
   primaryButtonTextDisabled: colors.neutral[500],
   primaryButtonBorderDisabled: colors.neutral[300],
 
-  secondaryButtonBackground: colors.blue[100],
-  secondaryButtonText: colors.blue[600],
-  secondaryButtonBorder: colors.blue[100],
+  secondaryButtonBackground: colors.orange[100],
+  secondaryButtonText: colors.orange[600],
+  secondaryButtonBorder: colors.orange[100],
   secondaryButtonBorderDisabled: colors.neutral[300],
   secondaryButtonBackgroundDisabled: colors.neutral[300],
   secondaryButtonTextDisabled: colors.neutral[500],
@@ -372,9 +382,9 @@ const dark: IColors & {
   primaryButtonTextDisabled: colors.neutral[400],
   primaryButtonBorderDisabled: colors.neutral[800],
 
-  secondaryButtonBackground: colors.blue[900],
-  secondaryButtonText: colors.blue[100],
-  secondaryButtonBorder: colors.blue[900],
+  secondaryButtonBackground: colors.orange[900],
+  secondaryButtonText: colors.orange[300],
+  secondaryButtonBorder: colors.orange[900],
   secondaryButtonBackgroundDisabled: colors.neutral[800],
   secondaryButtonTextDisabled: colors.neutral[400],
   secondaryButtonBorderDisabled: colors.neutral[800],
