@@ -22,6 +22,7 @@ import Indicator from "@/components/Indicator";
 import { useCalendarNavigation } from "@/hooks/useCalendarNavigation";
 import dayjs from "dayjs";
 import { DATE_FORMAT } from "@/constants/Config";
+import { ImageBackground } from 'react-native';
 
 export const API_URL = "https://tafakari-7d6ea5b42c18.herokuapp.com/";
 
@@ -103,18 +104,13 @@ const HomeScreen = () => {
     [navigation, calendarNavigation]
   );
   return (
-    <View
-      // className="flex flex-1 bg-[#fbfbfb] -mt-10 "
-      style={{
-        flex: 1,
-        backgroundColor: colors.calendarBackground,
-        marginTop: -8,
-
-        paddingTop: 40,
-      }}
-    >
-      <StatusBar barStyle="dark-content" />
-      <SectionGreetings />
+    <View style={{flex: 1}}>
+    <ImageBackground source={require('../../../assets/ankara.png')} style={{width: '100%', height: '20%'}} resizeMode="cover">
+      <View style={{height: '100%', marginTop: -8, paddingTop: 40}}>
+        <StatusBar barStyle="dark-content" />
+        <SectionGreetings />
+      </View>
+    </ImageBackground>
 
       <ScrollView
         // className="mt-3 mx-4 mb-16"
@@ -248,7 +244,7 @@ const HomeScreen = () => {
                       style={{ padding: 10, marginLeft: 30, marginTop:3  }}
                       color="white"
                     />
-             
+            
             </View>
           </View>
           <Image
@@ -272,7 +268,7 @@ const HomeScreen = () => {
             // className="flex  px-9 py-4 rounded-3xl  flex-row items-center justify-between bg-[#F4F3F1]"
             style={{
               backgroundColor: "#F4F3F1",
-               // opacity:.2, //for dark mode
+              // opacity:.2, //for dark mode
               padding: 25,
               borderRadius: 20,
               flexDirection: "row",
@@ -433,6 +429,7 @@ const HomeScreen = () => {
         </View>
       </ScrollView>
     </View>
+    
   );
 };
 
