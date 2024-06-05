@@ -45,8 +45,8 @@ const tintColorDark = '#FE8235';
 const light = {
   text: '#000',
   // textSecondary: colors.neutral[500],
-  textSecondary: "#573926",
-  background: colors.neutral[100],
+  textSecondary: "#371B34",
+  background: "#FBFBFB",
   backgroundSecondary: colors.neutral[300],
   link: tintColorLight,
   tint: tintColorLight,

@@ -31,6 +31,9 @@ const SectionGreetings = ({marginH = 16}) => {
                 justifyContent: 'space-between',
                 marginHorizontal: marginH,
                 alignItems: 'center',
+                padding: 10,
+                marginTop: 15,
+                marginBottom: 10,
             }}
             // className="flex flex-row justify-between mx-4 items-center"
             >

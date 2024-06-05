@@ -105,12 +105,12 @@ const HomeScreen = () => {
   );
   return (
     <View style={{flex: 1}}>
-    <ImageBackground source={require('../../../assets/ankara.png')} style={{width: '100%', height: '20%'}} resizeMode="cover">
-      <View style={{height: '100%', marginTop: -8, paddingTop: 40}}>
-        <StatusBar barStyle="dark-content" />
-        <SectionGreetings />
-      </View>
-    </ImageBackground>
+      <ImageBackground source={require('../../../assets/ankara.png')} style={{width: '100%', height: 55}} resizeMode="cover">
+        <View style={{height: '100%', marginTop: -20, paddingTop: 20}}>
+          <StatusBar barStyle="dark-content" />
+          <SectionGreetings />
+        </View>
+      </ImageBackground>
 
       <ScrollView
         // className="mt-3 mx-4 mb-16"
@@ -125,8 +125,9 @@ const HomeScreen = () => {
         <View
           style={{
             flexDirection: "row",
-            marginTop: 20,
+            marginTop: 25,
             marginBottom: 5,
+            padding: 10,
           }}
           // className="flex mt-3 flex-row mb-3"
         >
@@ -142,6 +143,7 @@ const HomeScreen = () => {
               // className="font-medium"
               style={{
                 fontWeight: "400",
+                color: colors.text,
               }}
             >
               {greeting},{" "}
@@ -155,7 +157,7 @@ const HomeScreen = () => {
 
         {canClick && (
           <View style={styles.container}>
-            <Text style={{ ...styles.heading, color: colors.textSecondary }}>
+            <Text style={{ ...styles.heading, color: colors.text }}>
               How are you feeling today?
             </Text>
             <ScrollView
@@ -201,8 +203,8 @@ const HomeScreen = () => {
                   </TouchableOpacity>
                   <Text
                     style={{
-                      color: "#828282",
-                      fontWeight: "bold",
+                      color: colors.textSecondary,
+                      fontWeight: "normal",
                       fontSize: 12,
                       marginRight: 25,
                       marginTop: 10,
@@ -387,11 +389,36 @@ const HomeScreen = () => {
               Let’s open up to the things that {"\n"}matter the most
             </Text>
 
-            {/* <TouchableOpacity 
-            // onPress={() => navigation.navigate("Calendar")}
-            > */}
+            <TouchableOpacity
+            onPress={() => navigation.navigate("Calendar")}
+            // className="flex  px-9 py-4 rounded-3xl  flex-row items-center justify-between bg-[#F4F3F1]"
+            style={{
+              backgroundColor: "#F4F3F1",
+              // opacity:.2, //for dark mode
+              padding: 20,
+              borderRadius: 20,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              
+            }}
+          >
+            <Ionicons name="construct" size={24} color={"#FE8235"} />
+            <Text
+              // className="ml-2 text-[#573926] text-[14px]"
+              style={{
+                // marginLeft: 8,
+                // color: "#573926",
+                fontSize: 16,
+                color: colors.textSecondary,
+                fontWeight: "bold",
+              }}
+            >
+              Coming Soon
+            </Text>
+          </TouchableOpacity>
 
-            <Indicator
+            {/* <Indicator
               colorName="orange"
               style={{
                 // marginLeft: 8,
@@ -399,7 +426,7 @@ const HomeScreen = () => {
               }}
             >
               Coming Soon
-            </Indicator>
+            </Indicator> */}
 
             {/* <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
