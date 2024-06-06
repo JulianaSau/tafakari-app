@@ -44,11 +44,11 @@ const SectionGreetings = ({marginH = 16}) => {
                         source={require("../../../assets/ellipse-2.png")}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     onPress={handlePress}
                 >
                     <Feather name="bell" size={30} color={colors.textSecondary} />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
             </View>
         </View>
