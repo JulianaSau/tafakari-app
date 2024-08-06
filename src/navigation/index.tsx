@@ -283,10 +283,8 @@ function RootNavigator() {
 
         <Stack.Group
           screenOptions={{
-            title: '',
-            presentation: 'modal',
-            gestureEnabled: false,
-            headerShown: false,
+            ...defaultOptions,
+            headerBackTitle: '',
           }}
         >
           <Stack.Screen
