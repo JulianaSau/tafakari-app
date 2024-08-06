@@ -12,6 +12,7 @@ import { SettingsScreen, StatisticsScreen } from '../screens';
 import CalendarScreen from '../screens/Calendar';
 import { MyTabBar } from "./MyTabBar";
 import HomeScreen from '@/screens/Home';
+import Therapists from '@/screens/Therapists/Therapists';
 
 const Tab = createBottomTabNavigator();
 
@@ -87,6 +88,16 @@ export const BottomTabs = () => {
           headerShown: false,
           tabBarTestID: 'statistics',
           title: t('statistics'),
+        })} />
+              <Tab.Screen
+        name="Therapists"
+        component={Therapists}
+        options={({ navigation }) => ({
+          ...defaultOptions,
+          headerShown: false,
+          tabBarTestID: 'therapists',
+          // title: t('therapists'),
+          title: 'therapists',
         })} />
       <Tab.Screen
         name="Settings"
