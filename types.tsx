@@ -21,6 +21,7 @@ export type RootStackParamList = {
   Colors: undefined;
   Licenses: undefined;
   Calendar: undefined;
+  Therapist: undefined;
   NotFound: undefined;
   Data: undefined;
   Reminder: undefined;
@@ -29,6 +30,10 @@ export type RootStackParamList = {
   // PasscodeLocked: undefined;
   Tags: undefined;
   DevelopmentTools: undefined;
+
+  TherapistDetail: {
+    id: string;
+  };
 
   BotLogger: {
     dateTime: string;

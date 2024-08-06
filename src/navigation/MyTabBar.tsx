@@ -8,6 +8,7 @@ import useHaptics from '@/hooks/useHaptics';
 import { SettingsScreen, StatisticsScreen } from '../screens';
 import CalendarScreen from '../screens/Calendar';
 import HomeScreen from '../screens/Home';
+import Therapists from '@/screens/Therapists/Therapists';
 
 export const ROUTES: {
   name: string;
@@ -32,6 +33,12 @@ export const ROUTES: {
       component: CalendarScreen,
       icon: CalendarIcon,
       path: 'calendar',
+    },
+    {
+      name: 'Therapists',
+      component: Therapists,
+      icon: CalendarIcon,
+      path: 'Therapists',
     },
     {
       name: 'Settings',

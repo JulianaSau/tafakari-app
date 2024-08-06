@@ -15,3 +15,4 @@ export * from './BotLogger';
 export * from './LogList'
 export * from './Settings/Tags'
 export * from './Home'
+export * from './Therapists/Therapists'

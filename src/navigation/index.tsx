@@ -40,6 +40,7 @@ import { BackButton } from './BackButton';
 import { BottomTabs } from './BottomTabs';
 import { BotLoggerEmotions } from '@/screens/BotLogger/Emotions';
 import { BotLoggerTags } from '@/screens/BotLogger/Tags';
+import TherapistDetail from '@/screens/Therapists/TherapistDetail';
 
 enableScreens();
 
@@ -51,6 +52,9 @@ const NAVIGATION_LINKING = {
   config: {
     screens: {
       Home: "home",
+
+      Therapists: "therapists",
+      TherapistDetail:"therapists/:id",
 
       Calendar: 'calendar',
       Onboarding: 'onboarding',
@@ -274,6 +278,18 @@ function RootNavigator() {
           <Stack.Screen
             name="LogEdit"
             component={LogEdit}
+          />
+        </Stack.Group>
+
+        <Stack.Group
+          screenOptions={{
+            ...defaultOptions,
+            headerBackTitle: '',
+          }}
+        >
+          <Stack.Screen
+            name="TherapistDetail"
+            component={TherapistDetail}
           />
         </Stack.Group>
 
