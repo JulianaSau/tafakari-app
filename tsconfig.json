@@ -3,11 +3,13 @@
   "noImplicitAny": false,
   "compilerOptions": {
     "strictNullChecks": true,
-    "strict": false,
+    "strict": true,
     "module": "esnext",
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/**/*",

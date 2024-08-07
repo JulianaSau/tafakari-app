@@ -58,7 +58,7 @@
     "babel-plugin-module-resolver": "^5.0.2",
     "chroma-js": "^2.4.2",
     "dayjs": "^1.11.7",
-    "expo": "^50.0.0",
+    "expo": "^50.0.19",
     "expo-application": "~5.8.4",
     "expo-asset": "~9.0.2",
     "expo-constants": "~15.4.6",
